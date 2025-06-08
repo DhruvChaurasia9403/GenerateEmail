@@ -5,6 +5,7 @@
  */
 function generateVerificationCode(): string {
     // TODO: Implement this function
+    return random(100000,999999);
 }
 
 /**
@@ -12,7 +13,14 @@ function generateVerificationCode(): string {
  */
 function sendVerificationEmail(string $email, string $code): bool {
     // TODO: Implement this function
-}
+    $subject = "Your Verification Code ";
+    $message = "<p>Your verification code is: <strong> $code </strong></p>";
+    $headers = "MIME-Version: 1.0\r\n".
+                "Content-type:text/html;charset=UTF-8\r\n" .
+                "From: no_reply@example.com";
+    mail($email, $subject, $message, $headers);
+    storeVerificationCode($email, $code);
+}    
 
 /**
  * Register an email by storing it in a file.
