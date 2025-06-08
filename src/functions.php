@@ -28,6 +28,17 @@ function sendVerificationEmail(string $email, string $code): bool {
 function registerEmail(string $email): bool {
   $file = __DIR__ . '/registered_emails.txt';
     // TODO: Implement this function
+  //check if email already exists and saving it in emails
+  $emails = file_exists($fiel)?file($file,FILE_IGNORE_NEW_LINES):[];
+  if(!in_array($email,$emails)){
+    $fp = fopen($file,"a");
+    if(flock($fp,LOCK_EX)){
+      fwrite($fp,"$email\n");
+      fflush($fp);
+      flock($fp,LOCK_UN);
+    }
+    fclose($fp);
+  }
 }
 
 /**
