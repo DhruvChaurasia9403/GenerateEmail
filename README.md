@@ -120,7 +120,7 @@ bash
 Copy
 Edit
 php -S localhost:8000
-Then open: http://localhost:8000/src
+[Then open: http://localhost:8000/src](http://localhost/xkcd-DhruvChaurasia9403/src/)
 
 📦 Optional APK / Deployment
 If you have a mobile version or want to share the build, upload the .apk under Releases and add the link below:
